@@ -2,15 +2,55 @@ import User from '../models/User';
 import jwt from 'jsonwebtoken';
 import config from '../config';
 import Role from '../models/Role';
-//import Role from '../models/Role';
+//import userInfo from '../models/userInfo';
 
 // *****  SIGN UP ***************************************
 export const signUp = async (req, res) => {
-  const { username, email, password, roles } = req.body;
+  // pasar aqui la referencia, o todos los datos si no
+  const {
+    username,
+    email,
+    password,
+    roles,
+    avatar,
+    alias,
+    country,
+    city,
+    postalCode,
+    phone,
+    aboutMe,
+    haveDrone,
+    droneBrand,
+    droneModel,
+    latitude,
+    longitude,
+    price,
+    webpage,
+    rating,
+    enabled,
+    state,
+  } = req.body;
   const newUser = new User({
     username,
     email,
     password: await User.encryptPassword(password),
+    avatar,
+    alias,
+    country,
+    city,
+    postalCode,
+    phone,
+    aboutMe,
+    haveDrone,
+    droneBrand,
+    droneModel,
+    latitude,
+    longitude,
+    price,
+    webpage,
+    rating,
+    enabled,
+    state,
   });
 
   if (roles) {
@@ -52,4 +92,33 @@ export const signIn = async (req, res) => {
   res.json({ token, userId: userFound._id });
 
   console.log('token + id', userFound, userFound._id);
+};
+
+// ****** GET, POST, PUT, DELETE **************************************
+
+export const getUsers = async (req, res) => {
+  const users = await User.find();
+  res.send(users);
+};
+
+export const getUserById = async (req, res) => {
+  const getUser = await User.findById(req.params.userId);
+  res.status(200).json(getUser);
+};
+
+export const updateUserById = async (req, res) => {
+  const updatedUser = await User.findByIdAndUpdate(
+    req.params.userId,
+    req.body,
+    {
+      new: true,
+    }
+  );
+  res.status(200).json(updatedUser);
+};
+
+export const deleteUser = async (req, res) => {
+  const { userId } = req.params;
+  const deletedUser = await User.findByIdAndDelete(userId);
+  res.status(204).json();
 };
