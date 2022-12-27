@@ -1,11 +1,33 @@
 
-Project Setup
+## Instalar proyecto // install project
+ 
+- Clonar el repositorio a una carpeta de nuestro equipo :
+  
+```sh
+https://github.com/luigiMarte/uoc-tfm.git
+```
+- Ejecutar los siguientrs comandos en la terminal:
 
-Clonar el repositorio.
+```sh
+  cd uoc-tfm
+  npm install
+  npm run dev 
+  ( Se despliega el proyecto en localhost)
+```
 
-Ejecutar los siguientrs comandos en la terminal:
 
-npm install
+# English
 
-npm run dev --> se despliega en el puerto 3000
+- Clone the repository to a folder on our team:
 
+```sh
+https://github.com/luigiMarte/uoc-tfm.git
+```
+- Run the following commands in the terminal:
+
+```sh
+  cd uoc-tfm
+  npm install
+  npm run dev 
+  ( now the project is deployed on localhost)
+```

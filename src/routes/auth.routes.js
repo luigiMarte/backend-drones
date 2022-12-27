@@ -16,6 +16,10 @@ router.get('/:userId', userController.getUserById);
 
 router.put('/:userId', verifyToken, userController.updateUserById);
 
+// get pilots
+router.get('/pilots', userController.getPilots);
+router.get('/city/:city', userController.getPilotsByCity);
+
 // router.delete('/:userId', verifyToken, userInfoController.deleteUser);
 
 export default router;

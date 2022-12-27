@@ -106,6 +106,21 @@ export const getUserById = async (req, res) => {
   res.status(200).json(getUser);
 };
 
+export const getPilots = async (req, res) => {
+  console.log('getPilots');
+  const data = req.params.pilots;
+  if (data) {
+    const getUser = await User.find({ haveDrone: true });
+  }
+  res.status(200).send('legal');
+};
+
+export const getPilotsByCity = async (req, res) => {
+  const data = req.params.city;
+  const getUser = await User.find({ city: data }).find({ haveDrone: true });
+  res.status(200).json(getUser);
+};
+
 export const updateUserById = async (req, res) => {
   const updatedUser = await User.findByIdAndUpdate(
     req.params.userId,
