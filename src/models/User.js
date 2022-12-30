@@ -6,14 +6,19 @@ const userSchema = new Schema(
     username: {
       type: String,
       unique: true,
+      required: true,
+      trim: true,
     },
     email: {
       type: String,
       unique: true,
+      required: true,
+      trim: true,
     },
     password: {
       type: String,
-      unique: true,
+      required: true,
+      trim: true,
     },
     roles: [
       {
@@ -23,71 +28,75 @@ const userSchema = new Schema(
     ],
     avatar: {
       type: String,
-      unique: true,
+
+      required: true,
+      trim: true,
     },
     alias: {
       type: String,
-      unique: true,
+      trim: true,
     },
     country: {
       type: String,
-      unique: true,
+      required: true,
+      trim: true,
     },
     city: {
       type: String,
-      unique: true,
+      required: true,
+      trim: true,
     },
     postalCode: {
       type: String,
-      unique: true,
+      required: true,
+      trim: true,
     },
     phone: {
       type: Number,
       unique: true,
+      trim: true,
     },
     aboutMe: {
       type: String,
-      unique: true,
+      required: false,
     },
     haveDrone: {
       type: Boolean,
-      unique: true,
+      required: true,
     },
     droneBrand: {
       type: String,
-      unique: true,
+      trim: true,
     },
     droneModel: {
       type: String,
-      unique: true,
+      trim: true,
     },
     latitude: {
       type: String,
-      unique: true,
+      trim: true,
     },
     longitude: {
       type: String,
-      unique: true,
+      trim: true,
     },
     price: {
       type: Number,
-      unique: true,
+      trim: true,
     },
     webpage: {
       type: String,
       unique: true,
+      trim: true,
     },
     enabled: {
       type: Boolean,
-      unique: true,
     },
     rating: {
       type: Number,
-      unique: true,
     },
     state: {
       type: Boolean,
-      unique: true,
     },
   },
   {
