@@ -132,6 +132,14 @@ export const updateUserById = async (req, res) => {
   res.status(200).json(updatedUser);
 };
 
+export const updateFavorites = async (req, res) => {
+  const updatedFavorite = await User.findOne({ _id: req.params.userId });
+  console.log(req.body);
+  updatedFavorite.favorites.push(req.body);
+  await updatedFavorite.save();
+  res.status(200).json(updatedFavorite);
+};
+
 export const deleteUser = async (req, res) => {
   const { userId } = req.params;
   const deletedUser = await User.findByIdAndDelete(userId);

@@ -98,6 +98,9 @@ const userSchema = new Schema(
     state: {
       type: Boolean,
     },
+    favorites: {
+      type: Array,
+    },
   },
   {
     timestamp: true,
