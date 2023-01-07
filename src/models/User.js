@@ -89,6 +89,10 @@ const userSchema = new Schema(
       unique: true,
       trim: true,
     },
+    video: {
+      type: String,
+      trim: true,
+    },
     enabled: {
       type: Boolean,
     },
