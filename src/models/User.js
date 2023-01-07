@@ -93,6 +93,26 @@ const userSchema = new Schema(
       type: String,
       trim: true,
     },
+    youtube: {
+      type: String,
+      trim: true,
+    },
+    instagram: {
+      type: String,
+      trim: true,
+    },
+    tiktok: {
+      type: String,
+      trim: true,
+    },
+    twitter: {
+      type: String,
+      trim: true,
+    },
+    facebook: {
+      type: String,
+      trim: true,
+    },
     enabled: {
       type: Boolean,
     },
