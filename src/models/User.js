@@ -28,12 +28,12 @@ const userSchema = new Schema(
     ],
     avatar: {
       type: String,
-
       required: true,
       trim: true,
     },
     alias: {
       type: String,
+      required: true,
       trim: true,
     },
     country: {
@@ -53,6 +53,7 @@ const userSchema = new Schema(
     },
     phone: {
       type: Number,
+      required: true,
       unique: true,
       trim: true,
     },
@@ -86,7 +87,6 @@ const userSchema = new Schema(
     },
     webpage: {
       type: String,
-      unique: true,
       trim: true,
     },
     video: {
