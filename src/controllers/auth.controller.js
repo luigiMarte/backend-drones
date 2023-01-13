@@ -153,6 +153,22 @@ export const updateFavorites = async (req, res) => {
   res.status(200).json(updatedFavorite);
 };
 
+export const removeFavorite = async (req, res) => {
+  console.log('req params', req.params);
+
+  // const deleteFavorite = await User.findOne({ _id: pilotId });
+  // console.log('deletefavorite fav:', deleteFavorite.favorites);
+  //deleteFavorite.favorites.pull({ id: req.params.userId });
+  // const pilotId = req.body;
+  // const user = req.params;
+  // console.log('pilotId', pilotId);
+  // console.log('pilotId', user);
+  // const deleteFavorite = await User.findOne({ _id: pilotId });
+  // console.log('deletefavorite fav:', deleteFavorite);
+  //await deleteFavorite.save();
+  res.status(200).json('ok');
+};
+
 export const deleteUser = async (req, res) => {
   const { userId } = req.params;
   const deletedUser = await User.findByIdAndDelete(userId);

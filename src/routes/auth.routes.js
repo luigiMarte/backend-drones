@@ -17,6 +17,7 @@ router.get('/:userId', userController.getUserById);
 router.put('/:userId', verifyToken, userController.updateUserById);
 
 router.post('/favorites/:userId', verifyToken, userController.updateFavorites);
+router.post('/favorites/remove/:userId', userController.removeFavorite);
 
 // get pilots
 router.get('/pilots', userController.getPilots);
