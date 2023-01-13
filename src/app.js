@@ -8,7 +8,7 @@ import { createRoles } from './libs/initialSetup';
 
 import userInfoRoutes from './routes/userInfo.routes';
 import authRoutes from './routes/auth.routes';
-// import path from 'path';
+import path from 'path';
 // import { fileURLToPath } from 'url';
 
 const app = express();
@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 app.use('/api/users', userInfoRoutes);
 app.use('/api/auth', authRoutes);
 
-// app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../dist')));
 // app.get('/*', (req, res) => {
 //   res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 // });
