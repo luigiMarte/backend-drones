@@ -8,19 +8,19 @@ import { createRoles } from "./libs/initialSetup.js";
 
 import userInfoRoutes from "./routes/userInfo.routes.js";
 import authRoutes from "./routes/auth.routes.js";
-import path from "path";
-import { fileURLToPath } from "url";
+// import path from "path";
+// import { fileURLToPath } from "url";
 
 const app = express();
 app.use(cors());
 createRoles();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 // usamos metodo set de express
 //app.set("pack", pack);
-app.set("path", path);
+//app.set("path", path);
 
 // Morgan es un middleware de express xa mostrar GET, stados en consola
 app.use(morgan("dev"));
@@ -42,8 +42,8 @@ app.get("/", (req, res) => {
 app.use("/api/users", userInfoRoutes);
 app.use("/api/auth", authRoutes);
 
-console.log(path.join(__dirname, "../dist"));
-app.use(express.static(path.join(__dirname, "..", "..", "dist")));
+// console.log(path.join(__dirname, "../dist"));
+// app.use(express.static(path.join(__dirname, "..", "..", "dist")));
 // app.get('/*', (req, res) => {
 //   res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 // });
