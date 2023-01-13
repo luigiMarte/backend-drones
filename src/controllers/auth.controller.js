@@ -1,7 +1,7 @@
-import User from '../models/User';
-import jwt from 'jsonwebtoken';
-import config from '../config';
-import Role from '../models/Role';
+import User from "../models/User.js";
+import jwt from "jsonwebtoken";
+import config from "../config.js";
+import Role from "../models/Role.js";
 //import userInfo from '../models/userInfo';
 
 // *****  SIGN UP ***************************************
@@ -69,7 +69,7 @@ export const signUp = async (req, res) => {
     const foundRoles = await Role.find({ name: { $in: roles } });
     newUser.roles = foundRoles.map((role) => role._id);
   } else {
-    const role = await Role.findOne({ name: 'user' });
+    const role = await Role.findOne({ name: "user" });
     newUser.roles = [role._id];
   }
 
@@ -86,10 +86,10 @@ export const signUp = async (req, res) => {
 export const signIn = async (req, res) => {
   //let respo = await User.validate();
   const userFound = await User.findOne({ email: req.body.email }).populate(
-    'roles'
+    "roles"
   );
   if (!userFound)
-    return res.status(400).json({ message: 'error.user_not_found' });
+    return res.status(400).json({ message: "error.user_not_found" });
 
   const matchPassword = await User.validatePassword(
     req.body.password,
@@ -97,14 +97,14 @@ export const signIn = async (req, res) => {
   );
 
   if (!matchPassword)
-    return res.status(401).json({ message: 'error.invalid_password' });
+    return res.status(401).json({ message: "error.invalid_password" });
 
   const token = jwt.sign({ id: userFound._id }, config.SECRET, {
     expiresIn: 86400,
   });
   res.json({ token, userId: userFound._id });
 
-  console.log('token + id', userFound, userFound._id);
+  console.log("token + id", userFound, userFound._id);
 };
 
 // ****** GET, POST, PUT, DELETE **************************************
@@ -120,12 +120,12 @@ export const getUserById = async (req, res) => {
 };
 
 export const getPilots = async (req, res) => {
-  console.log('getPilots');
+  console.log("getPilots");
   const data = req.params.pilots;
   if (data) {
     const getUser = await User.find({ haveDrone: true });
   }
-  res.status(200).send('legal');
+  res.status(200).send("legal");
 };
 
 export const getPilotsByCity = async (req, res) => {
@@ -154,17 +154,17 @@ export const updateFavorites = async (req, res) => {
 };
 
 export const removeFavorite = async (req, res) => {
-  console.log('req params', req.params);
+  console.log("req params", req.params);
   const userId = req.params.userId;
   const favoriteId = req.body.params.id;
-  console.log('userId params', userId);
-  console.log('favorite params', favoriteId);
+  console.log("userId params", userId);
+  console.log("favorite params", favoriteId);
   const deleteFavorite = await User.findOneAndUpdate(
     { _id: userId },
     { $pull: { favorites: { id: favoriteId } } }
   );
   await deleteFavorite.save();
-  res.status(200).json('ok');
+  res.status(200).json("ok");
 };
 
 export const deleteUser = async (req, res) => {

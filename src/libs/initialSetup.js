@@ -1,4 +1,4 @@
-import Role from '../models/Role';
+import Role from "../models/Role.js";
 
 export const createRoles = async () => {
   try {
@@ -7,10 +7,10 @@ export const createRoles = async () => {
     if (count > 0) return;
 
     const values = await Promise.all([
-      new Role({ name: 'user' }).save(),
-      new Role({ name: 'pilot' }).save(),
-      new Role({ name: 'user-pilot' }).save(),
-      new Role({ name: 'admin' }).save(),
+      new Role({ name: "user" }).save(),
+      new Role({ name: "pilot" }).save(),
+      new Role({ name: "user-pilot" }).save(),
+      new Role({ name: "admin" }).save(),
     ]);
 
     console.log(values);

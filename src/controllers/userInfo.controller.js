@@ -1,6 +1,6 @@
 // Para crear, eleminar  ..., usuarios
 
-import info from '../models/userInfo';
+import info from "../models/userInfo.js";
 
 export const createUser = async (req, res) => {
   console.log(req.body);

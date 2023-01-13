@@ -1,7 +1,7 @@
-import User from '../models/User';
-import jwt from 'jsonwebtoken';
-import config from '../config';
-import Role from '../models/Role';
+import User from "../models/User.js";
+import jwt from "jsonwebtoken.js";
+import config from "../config.js";
+import Role from "../models/Role.js";
 
 export const signUp = async (req, res) => {
   const { username, email, password, roles } = req.body;
@@ -10,7 +10,7 @@ export const signUp = async (req, res) => {
     email,
     password: await newUser.encryptPassword(password),
   });
-  res.json('ok');
+  res.json("ok");
   // let encryptPassword = await newUser.encryptPassword(password);
   // newUser.password = encryptPassword;
 
@@ -21,7 +21,7 @@ export const signUp = async (req, res) => {
     newUser.roles = foundRoles.map((role) => role._id);
   } else {
     // por defecto asignamos el role user
-    const role = await Role.findOne({ name: 'user' });
+    const role = await Role.findOne({ name: "user" });
     newUser.roles = [role._id];
   }
 
@@ -38,21 +38,21 @@ export const signUp = async (req, res) => {
 
 export const signIn = async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email }).populate(
-    'roles'
+    "roles"
   );
 
-  if (!userFound) return res.status(400).json({ message: 'User not found' });
+  if (!userFound) return res.status(400).json({ message: "User not found" });
 
   const matchPassword = await User.checkPassword();
   // { password: req.body.password },
   // userFound.password
-  console.log('MP', matchPassword);
+  console.log("MP", matchPassword);
   if (!matchPassword)
-    return res.status(401).json({ message: 'Invalid password' });
+    return res.status(401).json({ message: "Invalid password" });
   //   return res.status(401).json({ token: null, message: 'Invalid password' });
 
   console.log(userFound);
-  res.json({ token: '' });
+  res.json({ token: "" });
 
   // const token = jwt.sign({ id: userFound._id }, config.SECRET, {
   //   expiresIn: 86400,

@@ -1,7 +1,7 @@
 // Para crear, eleminar  ..., usuarios
 
 //import dataUserSchema from '../models/DataUser';
-import User from '../models/User';
+import User from "../models/User.js";
 
 export const createUser = async (req, res) => {
   console.log(req.body);

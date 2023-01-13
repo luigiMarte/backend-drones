@@ -1,19 +1,19 @@
-import { Router } from 'express';
+import { Router } from "express";
 const router = Router();
 
-import * as userInfoController from '../controllers/userInfo.controller';
+import * as userInfoController from "../controllers/userInfo.controller.js";
 // otra forma:
 //import {getUsers, getUserById} from '../controllers/users.controller';
-import { verifyToken } from '../middlewares';
+import { verifyToken } from "../middlewares/index.js";
 
-router.post('/', verifyToken, userInfoController.createUser);
+router.post("/", verifyToken, userInfoController.createUser);
 
-router.get('/', userInfoController.getUsers);
+router.get("/", userInfoController.getUsers);
 
-router.get('/:userId', userInfoController.getUserById);
+router.get("/:userId", userInfoController.getUserById);
 
-router.put('/:userId', verifyToken, userInfoController.updateUserById);
+router.put("/:userId", verifyToken, userInfoController.updateUserById);
 
-router.delete('/:userId', verifyToken, userInfoController.deleteUser);
+router.delete("/:userId", verifyToken, userInfoController.deleteUser);
 
 export default router;
