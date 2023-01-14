@@ -1,10 +1,10 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 // Set 'strictQuery' is only to remove console warning
 mongoose
-  .set('strictQuery', false)
+  .set("strictQuery", false)
   .connect(
-    'mongodb+srv://main_user:5TDz0sE3kyiIE1zR@cluster0.xgbqbgq.mongodb.net/dronesDB',
+    "mongodb+srv://main_user:5TDz0sE3kyiIE1zR@cluster0.xgbqbgq.mongodb.net/dronesDB",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -12,5 +12,5 @@ mongoose
       //useCreateIndex: true,
     }
   )
-  .then((db) => console.log('DB connected'))
-  .catch((err) => console.log('Error connecting', err));
+  .then((db) => console.log("DB connected"))
+  .catch((err) => console.log("Error connecting", err));
