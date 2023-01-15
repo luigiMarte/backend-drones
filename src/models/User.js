@@ -125,6 +125,10 @@ const userSchema = new Schema(
     favorites: {
       type: Array,
     },
+    currency: {
+      type: String,
+      trim: true,
+    },
   },
   {
     timestamp: true,

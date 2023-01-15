@@ -1,7 +1,7 @@
 // Para crear, eleminar  ..., usuarios
 
 //import dataUserSchema from '../models/DataUser';
-import User from "../models/User.js";
+import User from '../models/User.js';
 
 export const createUser = async (req, res) => {
   console.log(req.body);
@@ -25,6 +25,7 @@ export const createUser = async (req, res) => {
     other1,
     other2,
     state,
+    currency,
   } = req.body;
   const newUser = new dataUserSchema({
     avatar,
@@ -46,6 +47,7 @@ export const createUser = async (req, res) => {
     other1,
     other2,
     state,
+    currency,
   });
   const userSaved = await newUser.save();
   console.log(newUser);

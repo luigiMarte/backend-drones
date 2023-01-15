@@ -55,6 +55,10 @@ const dataUserSchema = new Schema(
       type: Boolean,
       default: true,
     },
+    currency: {
+      type: String,
+      trim: true,
+    },
   },
   {
     versionKey: false,
